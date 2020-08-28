@@ -45,7 +45,38 @@
   <p>
     <code>
     <pre class = "prettyprint linenums">
-    print("testing pretty print")
+    class neuralNetwork:
+    def __init__(self, layerSizes):
+        self.layerSizes = layerSizes
+        self.values = [[] for a in range(len(self.layerSizes))]
+        self.weights = [[] for a in range(len(self.layerSizes)-1)]
+        self.biases = [[] for a in range(len(self.layerSizes)-1)]    
+        self.fitness = 0
+
+    def generateValues(self): # fills in previously made matrixes with random numbers normal distributed
+        self.values = [[] for a in range(len(self.layerSizes))]
+        self.weights = [[] for a in range(len(self.layerSizes)-1)]
+        self.biases = [[] for a in range(len(self.layerSizes)-1)]        
+        for layerNo in range(0, len(self.layerSizes)-1):
+            for neuronNo in range(self.layerSizes[layerNo+1]):
+                self.weights[layerNo].append(np.random.normal(0, 1, self.layerSizes[layerNo]))
+            self.biases[layerNo] = np.random.normal(0, 1, self.layerSizes[layerNo+1])
+
+    def recieveValues(self, weights, biases):  # need to deep copy as other wise uses pointer to original
+        self.weights = copy.deepcopy(weights)
+        self.biases = copy.deepcopy(biases)
+
+    def think(self, inputArray): # goes through the layers multiplying each and then adding the biases put through the activationFunction then repeat
+        if len(inputArray) != self.layerSizes[0]:
+            return None
+        self.values[0] = inputArray
+        for layerNo in range(len(self.layerSizes)-1):
+            self.values[layerNo+1]=self.activationFunction( np.add( np.dot(self.weights[layerNo], self.values[layerNo] ), self.biases[layerNo]) )
+            #feeds forward using matrices to calculate next layer of values
+        returnArray = []
+        for value in self.values[len(self.layerSizes)-1]:
+            returnArray.append(round(value))
+        return returnArray
     </pre>
     </code>
   </p>
