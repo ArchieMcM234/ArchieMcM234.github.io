@@ -42,7 +42,16 @@
   <p>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/gyvGq5fdOVk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </p>
-  <div class='heading'>Self-driving car in Python</div>
+  <div class='heading'>Implementation</div><hr/>
+  <p>
+    Most of the code for this project si fairly unimpressive, but some of the methods are somewhat interesting:<br>
+    To simulate the car I used the classic numerical integration between frames method with very basic modeling of the forces on the car: brakes, engine etc. <br>
+    To generate tracks I implemented the old sampling a Perlin noise plane in a circle and mapping it to the distance from the centre so it lines up with itself trick.<br>
+    To train the networks I used a really pathetic evolutionary algorithm, the problem with it being my version of crossover or breeding was to randomly choose one of the values of the network (weights or biases) and use for the new network but obviously its structures of values that matter not individual values. It does however work as a random iterative sampling of the latent? space.<br>
+  </p>
+  <p>
+    My implementation of the neural network class came out quite nice due to my structuring of the arrays allowing any number of layers each of any size. These are passed as an array of integers of length n with each item being the size of its corrosponding layer.  
+  </p>
   <p>
     <code>
     <pre class = "prettyprint linenums">
@@ -78,13 +87,16 @@
           for value in self.values[len(self.layerSizes)-1]:
               returnArray.append(round(value))
           return returnArray
+
+    #create new network with thse layer sizes
+    brain = neuralNetwork([3, 7, 7, 5])
     </pre>
     </code>
   </p>
   <p>
   For the full and detailed write up: <a href="https://archiemcm234.github.io/dump/NEA-Report.docx">NEA-Report.docx</a><br>
   For the program: <a href="https://archiemcm234.github.io/dump/self-driving-car.docx">self-driving-car.py</a>
-  </p><hr/>
+  </p>
 
 
   </body>
