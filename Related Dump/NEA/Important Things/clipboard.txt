@@ -1,2 +1,0 @@
-As my project is aimed at familiarising people with concepts such as evolutionary algorithms, neural networks and self-driving cars,  my supervisor is Mr Sloane my computer science teacher
-What do you think students should understand about neural networks and AI?
