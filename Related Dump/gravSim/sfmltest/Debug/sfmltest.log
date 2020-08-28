@@ -1,0 +1,23 @@
+﻿  sfmltest.cpp
+C:\Users\Archie\source\repos\sfmltest\sfmltest\sfmltest.cpp(34,45): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Archie\source\repos\sfmltest\sfmltest\sfmltest.cpp(34,37): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Archie\source\repos\sfmltest\sfmltest\sfmltest.cpp(35,24): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\Archie\source\repos\sfmltest\sfmltest\sfmltest.cpp(52,113): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\Archie\source\repos\sfmltest\sfmltest\sfmltest.cpp(53,117): warning C4244: '+=': conversion from 'double' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+  sfmltest.vcxproj -> C:\Users\Archie\source\repos\sfmltest\Debug\sfmltest.exe
