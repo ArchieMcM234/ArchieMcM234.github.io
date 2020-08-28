@@ -42,48 +42,49 @@
   <p>
     <iframe width="560" height="315" src="https://www.youtube.com/embed/gyvGq5fdOVk" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   </p>
+  <div class='heading'>Self-driving car in Python</div>
   <p>
     <code>
     <pre class = "prettyprint linenums">
     class neuralNetwork:
-    def __init__(self, layerSizes):
-        self.layerSizes = layerSizes
-        self.values = [[] for a in range(len(self.layerSizes))]
-        self.weights = [[] for a in range(len(self.layerSizes)-1)]
-        self.biases = [[] for a in range(len(self.layerSizes)-1)]    
-        self.fitness = 0
+      def __init__(self, layerSizes):
+          self.layerSizes = layerSizes
+          self.values = [[] for a in range(len(self.layerSizes))]
+          self.weights = [[] for a in range(len(self.layerSizes)-1)]
+          self.biases = [[] for a in range(len(self.layerSizes)-1)]    
+          self.fitness = 0
 
-    def generateValues(self): # fills in previously made matrixes with random numbers normal distributed
-        self.values = [[] for a in range(len(self.layerSizes))]
-        self.weights = [[] for a in range(len(self.layerSizes)-1)]
-        self.biases = [[] for a in range(len(self.layerSizes)-1)]        
-        for layerNo in range(0, len(self.layerSizes)-1):
-            for neuronNo in range(self.layerSizes[layerNo+1]):
-                self.weights[layerNo].append(np.random.normal(0, 1, self.layerSizes[layerNo]))
-            self.biases[layerNo] = np.random.normal(0, 1, self.layerSizes[layerNo+1])
+      def generateValues(self): # fills in previously made matrixes with random numbers normal distributed
+          self.values = [[] for a in range(len(self.layerSizes))]
+          self.weights = [[] for a in range(len(self.layerSizes)-1)]
+          self.biases = [[] for a in range(len(self.layerSizes)-1)]        
+          for layerNo in range(0, len(self.layerSizes)-1):
+              for neuronNo in range(self.layerSizes[layerNo+1]):
+                  self.weights[layerNo].append(np.random.normal(0, 1, self.layerSizes[layerNo]))
+              self.biases[layerNo] = np.random.normal(0, 1, self.layerSizes[layerNo+1])
 
-    def recieveValues(self, weights, biases):  # need to deep copy as other wise uses pointer to original
-        self.weights = copy.deepcopy(weights)
-        self.biases = copy.deepcopy(biases)
+      def recieveValues(self, weights, biases):  # need to deep copy as other wise uses pointer to original
+          self.weights = copy.deepcopy(weights)
+          self.biases = copy.deepcopy(biases)
 
-    def think(self, inputArray): # goes through the layers multiplying each and then adding the biases put through the activationFunction then repeat
-        if len(inputArray) != self.layerSizes[0]:
-            return None
-        self.values[0] = inputArray
-        for layerNo in range(len(self.layerSizes)-1):
-            self.values[layerNo+1]=self.activationFunction( np.add( np.dot(self.weights[layerNo], self.values[layerNo] ), self.biases[layerNo]) )
-            #feeds forward using matrices to calculate next layer of values
-        returnArray = []
-        for value in self.values[len(self.layerSizes)-1]:
-            returnArray.append(round(value))
-        return returnArray
+      def think(self, inputArray): # goes through the layers multiplying each and then adding the biases put through the activationFunction then repeat
+          if len(inputArray) != self.layerSizes[0]:
+              return None
+          self.values[0] = inputArray
+          for layerNo in range(len(self.layerSizes)-1):
+              self.values[layerNo+1]=self.activationFunction( np.add( np.dot(self.weights[layerNo], self.values[layerNo] ), self.biases[layerNo]) )
+              #feeds forward using matrices to calculate next layer of values
+          returnArray = []
+          for value in self.values[len(self.layerSizes)-1]:
+              returnArray.append(round(value))
+          return returnArray
     </pre>
     </code>
   </p>
   <p>
   For the full and detailed write up: <a href="https://archiemcm234.github.io/dump/NEA-Report.docx">NEA-Report.docx</a><br>
   For the program: <a href="https://archiemcm234.github.io/dump/self-driving-car.docx">self-driving-car.py</a>
-  </p>
+  </p><hr/>
 
 
   </body>
