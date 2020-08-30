@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="../../styles.css">
     <title>Archie McMullan</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <link rel="icon" href="icon.png" type="image/x-icon" />
+    <link rel="icon" href="../../icon.png" type="image/x-icon" />
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
   </head>  
   <body>
@@ -41,7 +41,7 @@
   </p>
   <div class='heading'>Implementation</div><hr/>
   <p>
-    Most of the code for this project si fairly unimpressive, but some of the methods are somewhat interesting:<br>
+    Most of the code for this project is fairly unimpressive, but some of the methods are somewhat interesting:<br>
     -To simulate the car I used the classic numerical integration between frames method with very basic modeling of the forces on the car: brakes, engine etc. <br>
     -To generate tracks I implemented the old sampling a Perlin noise plane in a circle and mapping it to the distance from the centre so it lines up with itself trick.<br>
     -To train the networks I used a really pathetic evolutionary algorithm, the problem with it being my version of crossover or breeding was to randomly choose one of the values of the network (weights or biases) and use for the new network but obviously its structures of values that matter not individual values. It does however work as a random iterative sampling of the latent? space.<br>
